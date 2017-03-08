@@ -1,0 +1,90 @@
+Listo:
+SCHEMAS
+
+CREATE SCHEMA prueba 
+CREATE TABLE prueba.prueba
+
+METADATOS
+
+Son datos de un dato
+
+DICCIONARIO DE DATOS
+conjunto de metadatos que brindan caracteristicas de los datos que se utilizan en el sistema que se programa
+
+VISTAS
+
+CREATE VIEW vista_cliente as select(nombre) from cliente;
+select * from vista_cliente;
+
+VER COSAS
+
+pg_roles
+pg_database
+pg_stat_user_tables
+pg_stat_user_indexes
+
+USUARIOS Y ROLES
+
+Crar un super usuario
+
+USE[master]
+GO
+CREATE LOGIN[super_user] with PASSWORD=N'super_user', DEFAULT_DATABASE=[master],CHECK_EXPIRATION=OFF,CHECK_POLICY=OFF
+GO
+
+Añadir role
+
+ALTER SERVER ROLE[sysadmin] ADD MEMBER[super_user]
+GO
+
+crear usuario administrador
+
+USE[master]
+CREATE LOGIN [admin_database_user] WITH PASSWORD=N'admin_database_user',DEFAULT_DATABASE=[master],CHECK_EXPIRATION=OFF,CHECK_POLICY=OFF
+GO
+
+añadir rol
+
+USE[master]
+ALTER SERVER ROLE[serveradmin] ADD MEMBER[admin_database_user]
+GO
+
+--Crear base de datos
+CREATE DATABASE [examen_admin]
+
+Falta:
+
+INDISES
+
+CREATE INDEX idx1
+ON veterinaria(nombre asc nulls last);
+
+SELECT telefono FROM veterinaria WHERE nombre ='alfredo';
+
+cliente(cedula,nombre,apellido,provincia,canton,distrito)
+linea(numero,tipo_linea)
+servicios(id_servicio,nombre,descripcion,coste)
+llamada(id,numero_destino,fecha,hora_inicio,hora_fin,duracion,costo_total,id_franja,codigo_ambito)
+ambito(codigo,tipo)
+tarifa(codigo,nombre,cuota_alta,cuota_establecida)
+tarifa_descuento(id,tarifa_incompatible,franja)
+franja(id,hora_inicio,hora_fin,descripcion)
+horario(id,dia,mes,año)
+rango(id,minuto_inicial,minuto_fin)
+puntos(id,numero_linea,puntos)
+premios(id,fecha_inicio,fecha_fin)
+
+
+LineaxCliente(id,cedula,numero)
+tarifaDescuentoxTarifa(id,id_tarifaDescuento,id_tarifa)
+ServiciosxLinea(id,numeroLinea,id_servicio)
+TarifaDescuentoxAmbito(id,id_tarifaDescuento,codigo_ambito)
+HorarioxFranja(id,id_franja,id_horario)
+puntosxPremio(id,id_puntos,id_premios		)
+
+
+
+
+
+
+
